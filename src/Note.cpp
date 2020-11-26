@@ -56,9 +56,6 @@ Note Note::random(int minoctave, int maxoctave, bool chromatic)
         std::vector<int> diatonic = {0, 2, 4, 5, 7, 9, 11};
         note = diatonic[note];
     }
-
-    std::cout << "generated random note with note = " << note << " and  octave = " << octave << std::endl;
-
     return Note(12 * octave + note);
 }
 
