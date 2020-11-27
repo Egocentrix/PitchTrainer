@@ -1,9 +1,13 @@
 #include <iostream>
 
 #include "Note.hpp"
+#include "Game.hpp"
 
 int main(int, char **)
 {
+    Game game;
+    game.play();
+    
     std::cout << "You will hear a tone. Use a tuning fork to determine what \n"
               << "note you just heard and type the answer in the form \'Ab5\'.\n"
               << "Use capital letters and don' t forget to include an \n"
