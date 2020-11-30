@@ -1,5 +1,5 @@
 
-add_executable(PitchTrainer main.cpp Game.cpp Note.cpp)
+add_executable(PitchTrainer main.cpp Game.cpp Keypad.cpp Note.cpp)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
