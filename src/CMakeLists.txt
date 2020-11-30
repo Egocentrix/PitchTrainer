@@ -1,5 +1,11 @@
 
-add_executable(PitchTrainer main.cpp Game.cpp Keypad.cpp Note.cpp)
+set(SRC main.cpp 
+        Game.cpp 
+        Keypad.cpp 
+        Note.cpp
+    )
+
+add_executable(PitchTrainer ${SRC})
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
