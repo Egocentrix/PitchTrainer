@@ -41,11 +41,17 @@ int Note::nameToNoteID(const std::string &name)
     return note;
 }
 
+    int Note::chromaticNoteID(int noteID)
+    {
+        return diatonicNoteID.at(noteID);
+    }
+
+
 Note Note::random(int minoctave, int maxoctave, bool chromatic)
 {
     int octave = std::rand() % (maxoctave - minoctave) + minoctave;
     int note = 0;
-    
+
     if (chromatic)
     {
         note = std::rand() % 12;
@@ -82,6 +88,8 @@ const std::vector<std::string> Note::noteIDToNameMap = {
     "A#",
     "B",
 };
+
+const std::vector<int> Note::diatonicNoteID = {0, 2, 4, 5, 7, 9, 11};
 
 void NotePlayer::play(float frequencyHz, float durationS, bool blocking)
 {

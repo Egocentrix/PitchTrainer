@@ -31,12 +31,14 @@ public:
 
     static std::string noteIDToName(int noteID);
     static int nameToNoteID(const std::string &name);
+    static int chromaticNoteID(int diatonicNoteID);
 
     static Note random(int minoctave, int maxoctave, bool chromatic = true);
 
 private:
     static const std::map<std::string, int> notenameToIDMap;
     static const std::vector<std::string> noteIDToNameMap;
+    static const std::vector<int> diatonicNoteID;
 };
 
 class NotePlayer
