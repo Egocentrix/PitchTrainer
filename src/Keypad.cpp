@@ -27,9 +27,9 @@ void Keypad::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 sf::FloatRect Keypad::getBounds() const
 {
-    float width = (chromatic ? 12 : 7) * (buttonsize+buttonpadding);
-    float height = numoctaves * (buttonsize+buttonpadding);
-    
+    float width = (chromatic ? 12 : 7) * (buttonsize + buttonpadding);
+    float height = numoctaves * (buttonsize + buttonpadding);
+
     return sf::FloatRect(getPosition(), sf::Vector2f(width, height));
 }
 

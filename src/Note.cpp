@@ -41,11 +41,10 @@ int Note::nameToNoteID(const std::string &name)
     return note;
 }
 
-    int Note::chromaticNoteID(int noteID)
-    {
-        return diatonicNoteID.at(noteID);
-    }
-
+int Note::chromaticNoteID(int noteID)
+{
+    return diatonicNoteID.at(noteID);
+}
 
 Note Note::random(int minoctave, int maxoctave, bool chromatic)
 {
