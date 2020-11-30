@@ -1,6 +1,8 @@
 #pragma once
 
-#include<SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+
+#include "Note.hpp"
 
 class Game
 {
@@ -11,5 +13,5 @@ public:
     void play();
 
 private:
-
+    NotePlayer noteplayer;
 };

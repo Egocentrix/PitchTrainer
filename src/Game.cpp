@@ -1,6 +1,7 @@
 #include "Game.hpp"
 
 #include <random>
+#include <iostream>
 
 #include "Keypad.hpp"
 
@@ -18,7 +19,7 @@ void Game::play()
     sf::RenderWindow window(sf::VideoMode(400, 300), "Musical Battleship");
     sf::View view;
 
-    Keypad pad(2, 3, false);
+    Keypad pad(2, 4, true);
     pad.setPosition(100, 100);
 
     while (window.isOpen())
@@ -40,7 +41,13 @@ void Game::play()
             {
                 if (e.mouseButton.button == sf::Mouse::Left)
                 {
-                    sf::Vector2i pos = sf::Mouse::getPosition(window);
+                    sf::Vector2i pos(sf::Mouse::getPosition(window));
+                    if (pad.getBounds().contains(sf::Vector2f(pos)))
+                    {
+                        Note note = pad.catchclick(pos);
+                        noteplayer.play(note.getFrequency());
+                        std::cout << Note::noteIDToName(note.noteID) << std::endl;
+                    }
                 }
             }
         }
