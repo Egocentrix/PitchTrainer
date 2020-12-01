@@ -7,7 +7,7 @@ int main(int, char **)
 {
     Game game;
     game.play();
-    
+
     std::cout << "You will hear a tone. Use a tuning fork to determine what \n"
               << "note you just heard and type the answer in the form \'Ab5\'.\n"
               << "Use capital letters and don' t forget to include an \n"
@@ -22,7 +22,7 @@ int main(int, char **)
     while (!exit)
     {
         Note note = Note::random(3, 5, true);
-        np.play(note.getFrequency(), 1, false);
+        np.play(note, 1, false);
 
         std::cout << "\nWhat note was this? \n(l)isten again / (e)xit / give (a)nswer / \n";
 
@@ -39,7 +39,7 @@ int main(int, char **)
             }
             else if (answer == "l")
             {
-                np.play(note.getFrequency(), 1, false);
+                np.play(note, 1, false);
             }
             else if (answer == "a")
             {

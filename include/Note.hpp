@@ -24,7 +24,7 @@ public:
         noteID = nameToNoteID(name);
     }
 
-    float getFrequency()
+    float getFrequency() const
     {
         return 440.f * pow(2, (noteID - 57) / 12.0); // A4 is 4*12 + 9 semitones above C0;
     }
@@ -50,6 +50,7 @@ public:
     ~NotePlayer() = default;
 
     void play(float frequencyHz, float durationS = 1, bool blocking = false);
+    void play(const Note &note, float durationS = 1, bool blocking = false);
 
 private:
     sf::SoundBuffer buffer;

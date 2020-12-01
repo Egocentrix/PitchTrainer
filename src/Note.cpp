@@ -111,3 +111,8 @@ void NotePlayer::play(float frequencyHz, float durationS, bool blocking)
         sf::sleep(sf::seconds(durationS));
     }
 }
+
+void NotePlayer::play(const Note &note, float durationS, bool blocking)
+{
+    play(note.getFrequency(), durationS, blocking);
+}

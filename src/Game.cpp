@@ -45,7 +45,7 @@ void Game::play()
                     if (pad.getBounds().contains(sf::Vector2f(pos)))
                     {
                         Note note = pad.catchclick(pos);
-                        noteplayer.play(note.getFrequency());
+                        noteplayer.play(note);
                         std::cout << Note::noteIDToName(note.noteID) << std::endl;
                     }
                 }
