@@ -20,7 +20,15 @@ void Game::play()
     sf::View view;
 
     Keypad pad(2, 4, true);
-    pad.setPosition(100, 100);
+    pad.setPosition(50, 100);
+
+    sf::Text notedisplay;
+    sf::Font font;
+    font.loadFromFile("./resources/NotoMono-Regular.ttf");
+    notedisplay.setFont(font);
+
+    notedisplay.setString("Hallo!");
+    notedisplay.setPosition(50,50);
 
     while (window.isOpen())
     {
@@ -46,7 +54,7 @@ void Game::play()
                     {
                         Note note = pad.catchclick(pos);
                         noteplayer.play(note);
-                        std::cout << Note::noteIDToName(note.noteID) << std::endl;
+                        notedisplay.setString(Note::noteIDToName(note.noteID));
                     }
                 }
             }
@@ -54,6 +62,7 @@ void Game::play()
 
         window.clear(sf::Color::Black);
         window.draw(pad);
+        window.draw(notedisplay);
         window.display();
     }
 }
