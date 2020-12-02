@@ -4,6 +4,7 @@
 
 #include "Note.hpp"
 
+// Keypad for playing/selecting notes
 class Keypad : public sf::Drawable, public sf::Transformable
 {
 private:

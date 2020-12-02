@@ -19,6 +19,7 @@ public:
         this->noteID = noteID;
     }
 
+    // Construct a Note from a namestring (e.g. "A#4")
     Note(const std::string &name)
     {
         noteID = nameToNoteID(name);
@@ -33,6 +34,7 @@ public:
     static int nameToNoteID(const std::string &name);
     static int chromaticNoteID(int diatonicNoteID);
 
+    // Get a random note in the interval [ C_minoctave, C_maxoctave )
     static Note random(int minoctave, int maxoctave, bool chromatic = true);
 
 private:
