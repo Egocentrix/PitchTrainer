@@ -6,6 +6,7 @@
 
 #include <SFML/Audio.hpp>
 
+// Represents a single note (pitch)
 class Note
 {
 public:
@@ -30,6 +31,7 @@ public:
         return 440.f * pow(2, (noteID - 57) / 12.0); // A4 is 4*12 + 9 semitones above C0;
     }
 
+    // Conversion functions
     static std::string noteIDToName(int noteID);
     static int nameToNoteID(const std::string &name);
     static int chromaticNoteID(int diatonicNoteID);
@@ -43,6 +45,7 @@ private:
     static const std::vector<int> diatonicNoteID;
 };
 
+// Class for playing sine waves of a given frequency
 class NotePlayer
 {
 public:

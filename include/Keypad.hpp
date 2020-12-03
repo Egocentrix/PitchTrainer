@@ -13,15 +13,18 @@ private:
     bool chromatic;
 
 public:
-    int buttonsize;
-    int buttonpadding;
+    int buttonsize = 20;
+    int buttonpadding = 5;
 
     Keypad(int startoctave, int numoctaves, bool chromatic);
     ~Keypad();
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
-    sf::FloatRect getBounds() const;
+    // Get bounding box in world coordinates
+    sf::FloatRect getBounds() const; 
 
+    // Get the note that corresponds to the key that was clicked on.
+    // Checking bounds is the responsibility of the caller.
     Note catchclick(sf::Vector2i mousepos) const;
 };

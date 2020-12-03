@@ -52,6 +52,7 @@ void Game::play()
                     sf::Vector2i pos(sf::Mouse::getPosition(window));
                     if (pad.getBounds().contains(sf::Vector2f(pos)))
                     {
+                        // The keypad is clicked
                         Note note = pad.catchclick(pos);
                         noteplayer.play(note);
                         notedisplay.setString(Note::noteIDToName(note.noteID));

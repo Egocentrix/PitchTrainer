@@ -1,8 +1,7 @@
 #include "Keypad.hpp"
 
 Keypad::Keypad(int startoctave, int numoctaves, bool chromatic)
-    : numoctaves(numoctaves), startoctave(startoctave), chromatic(chromatic),
-      buttonpadding(5), buttonsize(20)
+    : startoctave(startoctave), numoctaves(numoctaves), chromatic(chromatic)
 {
 }
 
@@ -35,8 +34,8 @@ sf::FloatRect Keypad::getBounds() const
 
 Note Keypad::catchclick(sf::Vector2i mousepos) const
 {
-    mousepos.x -= getPosition().x;
-    mousepos.y -= getPosition().y;
+    mousepos.x -= getPosition().x + buttonpadding;
+    mousepos.y -= getPosition().y + buttonpadding;
 
     int octave = mousepos.y / (buttonsize + buttonpadding) + startoctave;
     int note = mousepos.x / (buttonsize + buttonpadding);
