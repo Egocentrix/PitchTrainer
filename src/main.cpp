@@ -5,6 +5,10 @@
 
 int main(int, char **)
 {
+    #ifndef NDEBUG
+    std::cout << "Debug config enabled" << std::endl;
+    #endif
+    
     Game game(GameParameters(2, 4, false));
     game.play();
 
