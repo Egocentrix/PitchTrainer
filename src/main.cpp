@@ -5,7 +5,7 @@
 
 int main(int, char **)
 {
-    Game game;
+    Game game(GameParameters(2,4,false));
     game.play();
 
     std::cout << "You will hear a tone. Use a tuning fork to determine what \n"

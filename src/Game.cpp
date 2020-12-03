@@ -7,7 +7,13 @@
 
 Game::Game()
 {
-    srand(time(0));
+    init();
+}
+
+Game::Game(const GameParameters &settings)
+    : gameparameters(settings)
+{
+    init();
 }
 
 Game::~Game()
@@ -19,7 +25,7 @@ void Game::play()
     sf::RenderWindow window(sf::VideoMode(400, 300), "Musical Battleship");
     sf::View view;
 
-    Keypad pad(2, 4, true);
+    Keypad pad(gameparameters.startoctave, gameparameters.numoctaves, gameparameters.chromatic);
     pad.setPosition(50, 100);
 
     sf::Text notedisplay;
@@ -66,4 +72,9 @@ void Game::play()
         window.draw(notedisplay);
         window.display();
     }
+}
+
+void Game::init()
+{
+    srand(time(0));
 }
