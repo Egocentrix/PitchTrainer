@@ -16,13 +16,14 @@ public:
     int buttonsize = 20;
     int buttonpadding = 5;
 
+    Keypad() = default;
     Keypad(int startoctave, int numoctaves, bool chromatic);
     ~Keypad();
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
     // Get bounding box in world coordinates
-    sf::FloatRect getBounds() const; 
+    sf::FloatRect getBounds() const;
 
     // Get the note that corresponds to the key that was clicked on.
     // Checking bounds is the responsibility of the caller.

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Note.hpp"
+#include "Keypad.hpp"
 
 // Difficulty settings for the guessing game
 class GameParameters
@@ -21,15 +22,24 @@ public:
 class Game
 {
 public:
-    Game();
-    Game(const GameParameters &settings);
+    Game(const GameParameters &settings = GameParameters());
     ~Game();
 
     void play();
 
 private:
     void init();
+    void draw();
+    void handleevents();
 
+    // Resources
+    sf::RenderWindow window;
+    sf::View view;
+    sf::Font font;
     GameParameters gameparameters;
     NotePlayer noteplayer;
+
+    // Game objects
+    Keypad pad;
+    sf::Text notedisplay;
 };
