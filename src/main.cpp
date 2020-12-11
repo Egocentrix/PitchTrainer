@@ -3,15 +3,19 @@
 #include "Note.hpp"
 #include "Game.hpp"
 
+#define USE_GUI
+
 int main(int, char **)
 {
     #ifndef NDEBUG
     std::cout << "Debug config enabled" << std::endl;
     #endif
     
+    
+    #ifdef USE_GUI
     Game game(GameParameters(2, 4, false));
     game.play();
-
+    #else
     std::cout << "You will hear a tone. Use a tuning fork to determine what \n"
               << "note you just heard and type the answer in the form \'Ab5\'.\n"
               << "Use capital letters and don' t forget to include an \n"
@@ -61,4 +65,5 @@ int main(int, char **)
             }
         }
     }
+    #endif
 }
