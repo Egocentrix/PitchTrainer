@@ -51,7 +51,7 @@ void Game::draw()
 {
     window.clear(sf::Color::Black);
 
-    for (auto obj : drawlist)
+    for (const auto obj : drawlist)
     {
         window.draw(*obj);
     }
