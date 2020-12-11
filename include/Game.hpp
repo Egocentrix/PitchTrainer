@@ -42,4 +42,7 @@ private:
     // Game objects
     Keypad pad;
     sf::Text notedisplay;
+    sf::RectangleShape referencebutton;
+
+    std::vector<sf::Drawable *> drawlist;
 };

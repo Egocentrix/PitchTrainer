@@ -33,18 +33,29 @@ void Game::init()
 
     pad = Keypad(gameparameters.startoctave, gameparameters.numoctaves, gameparameters.chromatic);
     pad.setPosition(50, 100);
+    drawlist.push_back(&pad);
 
     font.loadFromFile("./resources/NotoMono-Regular.ttf");
     notedisplay.setFont(font);
     notedisplay.setString("Hallo!");
     notedisplay.setPosition(50, 50);
+    drawlist.push_back(&notedisplay);
+
+    referencebutton = sf::RectangleShape(sf::Vector2f(50, 50));
+    referencebutton.setFillColor(sf::Color::Red);
+    referencebutton.setPosition(300, 100);
+    drawlist.push_back(&referencebutton);
 }
 
 void Game::draw()
 {
     window.clear(sf::Color::Black);
-    window.draw(pad);
-    window.draw(notedisplay);
+
+    for (auto obj : drawlist)
+    {
+        window.draw(*obj);
+    }
+
     window.display();
 }
 
@@ -74,6 +85,10 @@ void Game::handleevents()
                     Note note = pad.catchclick(pos);
                     noteplayer.play(note);
                     notedisplay.setString(Note::noteIDToName(note.noteID));
+                }
+                if (referencebutton.getGlobalBounds().contains(sf::Vector2f(pos)))
+                {
+                    noteplayer.play(Note("A4"));
                 }
             }
         }
