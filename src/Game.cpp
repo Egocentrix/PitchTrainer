@@ -29,6 +29,8 @@ void Game::init()
 {
     srand(time(0));
 
+    currentnote = Note::random(gameparameters.startoctave, gameparameters.startoctave + gameparameters.numoctaves, gameparameters.chromatic);
+
     window.create(sf::VideoMode(400, 300), "Musical Battleship");
 
     pad = Keypad(gameparameters.startoctave, gameparameters.numoctaves, gameparameters.chromatic);
@@ -45,6 +47,14 @@ void Game::init()
     referencebutton.setFillColor(sf::Color::Red);
     referencebutton.setPosition(300, 100);
     drawlist.push_back(&referencebutton);
+
+    againbutton = sf::RectangleShape(sf::Vector2f(50, 50));
+    againbutton.setFillColor(sf::Color::Red);
+    againbutton.setPosition(300, 160);
+    drawlist.push_back(&againbutton);
+
+    currentnote = Note::random(gameparameters.startoctave, gameparameters.startoctave + gameparameters.numoctaves, gameparameters.chromatic);
+    noteplayer.play(currentnote);
 }
 
 void Game::draw()
@@ -82,13 +92,27 @@ void Game::handleevents()
                 if (pad.getBounds().contains(sf::Vector2f(pos)))
                 {
                     // The keypad is clicked
-                    Note note = pad.catchclick(pos);
-                    noteplayer.play(note);
-                    notedisplay.setString(Note::noteIDToName(note.noteID));
+                    Note guess = pad.catchclick(pos);
+                    if (guess.noteID == currentnote.noteID)
+                    {
+                        notedisplay.setString("Correct!"); // This does not update, because draw() is not called. Rewrite to state machine?
+                        noteplayer.play(guess,1,true);
+                        notedisplay.setString("What note is this?");
+                        currentnote = Note::random(gameparameters.startoctave, gameparameters.startoctave + gameparameters.numoctaves, gameparameters.chromatic);
+                        noteplayer.play(currentnote);
+                    }
+                    else
+                    {
+                        notedisplay.setString("Sorry, " + Note::noteIDToName(guess.noteID) + " was not correct, try again");
+                    }
                 }
                 if (referencebutton.getGlobalBounds().contains(sf::Vector2f(pos)))
                 {
                     noteplayer.play(Note("A4"));
+                }
+                if (againbutton.getGlobalBounds().contains(sf::Vector2f(pos)))
+                {
+                    noteplayer.play(currentnote);
                 }
             }
         }

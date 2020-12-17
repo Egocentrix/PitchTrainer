@@ -32,6 +32,8 @@ private:
     void draw();
     void handleevents();
 
+    Note currentnote;
+
     // Resources
     sf::RenderWindow window;
     sf::View view;
@@ -43,6 +45,7 @@ private:
     Keypad pad;
     sf::Text notedisplay;
     sf::RectangleShape referencebutton;
+    sf::RectangleShape againbutton;
 
     std::vector<sf::Drawable *> drawlist;
 };
