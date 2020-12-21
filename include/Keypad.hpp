@@ -8,13 +8,13 @@
 class Keypad : public sf::Drawable, public sf::Transformable
 {
 private:
-    int startoctave;
-    int numoctaves;
-    bool chromatic;
+    int startoctave{2};
+    int numoctaves{2};
+    bool chromatic{false};
 
 public:
-    int buttonsize = 20;
-    int buttonpadding = 5;
+    int buttonsize{20};
+    int buttonpadding{5};
 
     Keypad() = default;
     Keypad(int startoctave, int numoctaves, bool chromatic);

@@ -9,11 +9,13 @@
 class GameParameters
 {
 public:
-    int startoctave;
-    int numoctaves;
-    bool chromatic;
+    int startoctave{2};
+    int numoctaves{3};
+    bool chromatic{true};
 
-    GameParameters(int startoctave = 2, int numoctaves = 3, bool chromatic = true)
+    GameParameters() = default;
+
+    GameParameters(int startoctave, int numoctaves, bool chromatic)
         : startoctave(startoctave), numoctaves(numoctaves), chromatic(chromatic)
     {
     }

@@ -11,7 +11,7 @@ class Note
 {
 public:
     // Notes start from 0 (C0), each semitone is a step up.
-    int noteID = {0};
+    int noteID{0};
 
     Note() = default;
 
@@ -49,10 +49,7 @@ private:
 class NotePlayer
 {
 public:
-    static const unsigned int SAMPLERATE = {44100};
-
-    NotePlayer() = default;
-    ~NotePlayer() = default;
+    static const unsigned int SAMPLERATE{44100};
 
     void play(float frequencyHz, float durationS = 1, bool blocking = false);
     void play(const Note &note, float durationS = 1, bool blocking = false);
