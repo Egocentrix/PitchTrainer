@@ -18,7 +18,6 @@ public:
 
     Keypad() = default;
     Keypad(int startoctave, int numoctaves, bool chromatic);
-    ~Keypad();
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 

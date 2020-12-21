@@ -13,7 +13,7 @@ int main(int, char **)
     
     
     #ifdef USE_GUI
-    Game game(GameParameters(2, 4, false));
+    Game game{GameParameters{2, 4, false}};
     game.play();
     #else
     std::cout << "You will hear a tone. Use a tuning fork to determine what \n"

@@ -14,17 +14,8 @@ public:
     int noteID{0};
 
     Note() = default;
-
-    Note(const int noteID)
-    {
-        this->noteID = noteID;
-    }
-
-    // Construct a Note from a namestring (e.g. "A#4")
-    Note(const std::string &name)
-    {
-        noteID = nameToNoteID(name);
-    }
+    Note(const int noteID) : noteID{noteID} {}
+    Note(const std::string &name) : noteID{nameToNoteID(name)} {}
 
     float getFrequency() const
     {

@@ -5,10 +5,6 @@ Keypad::Keypad(int startoctave, int numoctaves, bool chromatic)
 {
 }
 
-Keypad::~Keypad()
-{
-}
-
 void Keypad::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= this->getTransform();
