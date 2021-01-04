@@ -90,6 +90,16 @@ const std::vector<std::string> Note::noteIDToNameMap = {
 
 const std::vector<int> Note::diatonicNoteID = {0, 2, 4, 5, 7, 9, 11};
 
+bool operator==(const Note& lhs, const Note& rhs)
+{
+    return lhs.noteID == rhs.noteID;
+}
+
+bool operator!=(const Note& lhs, const Note& rhs)
+{
+    return !(lhs == rhs);
+}
+
 void NotePlayer::play(float frequencyHz, float durationS, bool blocking)
 {
 

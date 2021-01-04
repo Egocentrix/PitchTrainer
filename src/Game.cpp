@@ -93,7 +93,7 @@ void Game::handleevents()
                 {
                     // The keypad is clicked
                     Note guess = pad.catchclick(pos);
-                    if (guess.noteID == currentnote.noteID)
+                    if (guess == currentnote)
                     {
                         notedisplay.setString("Correct!"); // This does not update, because draw() is not called. Rewrite to state machine?
                         noteplayer.play(guess,1,true);

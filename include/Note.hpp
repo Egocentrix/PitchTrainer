@@ -36,6 +36,9 @@ private:
     static const std::vector<int> diatonicNoteID;
 };
 
+bool operator==(const Note& lhs, const Note& rhs);
+bool operator!=(const Note& lhs, const Note& rhs);
+
 // Class for playing sine waves of a given frequency
 class NotePlayer
 {
