@@ -39,7 +39,7 @@ void Game::init()
 
     font.loadFromFile("./resources/NotoMono-Regular.ttf");
     notedisplay.setFont(font);
-    notedisplay.setString("Hallo!");
+    notedisplay.setString("What note is this?");
     notedisplay.setPosition(50, 50);
     drawlist.push_back(&notedisplay);
 
@@ -95,9 +95,8 @@ void Game::handleevents()
                     Note guess = pad.catchclick(pos);
                     if (guess == currentnote)
                     {
-                        notedisplay.setString("Correct!"); // This does not update, because draw() is not called. Rewrite to state machine?
+                        notedisplay.setString("Correct! Now try the next one:");
                         noteplayer.play(guess,1,true);
-                        notedisplay.setString("What note is this?");
                         currentnote = Note::random(gameparameters.startoctave, gameparameters.startoctave + gameparameters.numoctaves, gameparameters.chromatic);
                         noteplayer.play(currentnote);
                     }
